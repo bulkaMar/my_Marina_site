@@ -27,11 +27,10 @@ jobs:
       - name: Setup Pages
         uses: actions/configure-pages@v5
 
-      - name: Update data file
+      - name: Update data file 2
         run: |
-          echo "MY_NAME=${{ vars.MY_NAME }}"
-          sed -i 's@<p id="myname"></p>@<p id="myname">'"${{ vars.MY_NAME }}"'</p>@g' index.html
-          cat index.html
+         sed -i 's@<p id="myname"></p>@<p id="myname">${{ vars.MY_NAME }}</p>@g' index.html
+         cat index.html
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
